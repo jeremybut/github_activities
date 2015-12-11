@@ -1,6 +1,6 @@
 .tt-menu
   .tt-dataset
-    %h3= "Aucune recherche récente" if @saved_searches.empty? 
+    %h3= 'Aucune recherche récente' if @saved_searches.empty? 
     - @saved_searches.each do |k,v|
       %a{href:"/users/#{k}/repos"}
         .tt-suggestion
