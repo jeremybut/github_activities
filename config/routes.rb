@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'users#index'
   match "/search/users" => "users#search", as: :search, via: [:post, :get]
+  match "/saved_searches" => "searches#saved_searches", as: :saved_searches, via: [:post, :get]
   
   resources :users, only: [:repos, :index] do 
     get 'repos', on: :member
