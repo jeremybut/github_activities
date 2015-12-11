@@ -1,0 +1,44 @@
+%button#menu-toggle.menu-toggle
+  %span Menu
+#theSidebar.sidebar
+  %button.close-button.fa.fa-fw.fa-close
+  %h1.title
+    = link_to root_url do
+      %span Github
+      %span Activités
+  .loader
+  .related
+    .meta.meta--preview
+      %img.meta__avatar{src: "#{@user.avatar_url}"}
+    %h1.title 
+      %a.username{href:"#{@user.html_url}", target:'_blank'} @#{@user.login}
+    %h4 Langages favoris
+    %h3
+      - @user.top_languages(3).each do |l,_v|
+        = l.to_s
+    %br
+    %h4 Statistiques
+    %h3 Actif depuis le #{l @user.created_at.to_date, format: :short}
+    %h3 Dernière activité le #{l @user.updated_at.to_date, format: :short}
+    %h3  #{@user.public_repos} dépôts publiques
+    %h3  #{pluralize(@user.followers, 'abonnement')}
+    %h3  #{pluralize(@user.following, 'abonné')}
+#theGrid.main
+  %section.grid
+    - @user.repos.each do |r|
+      = link_to details_user_repo_path(id:r.name, user_id:@user.login), remote: true, class:'grid__item' do
+        %h2.title.title--preview= r.name
+        .loader
+        %span.category= r.description
+        .meta.meta--preview
+          .glyph-sample
+            %i{class:"icon-#{r.language.downcase}"} 
+          %span.meta__date= r.language
+
+  %section.content
+    .scroll-wrap
+      - @user.repos.each do |r|
+        %article.content__item
+      %button.close-button
+        %i.fa.fa-close
+        %span Close         

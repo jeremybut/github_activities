@@ -1,0 +1,38 @@
+fr:
+  date:
+    abbr_day_names:
+      - dim
+      - lun
+      - mar
+      - mer
+      - jeu
+      - ven
+      - sam
+    abbr_month_names:
+      - ~
+      - jan.
+      - fév.
+      - mar.
+      - avr.
+      - mai
+      - juin
+      - juil.
+      - août
+      - sept.
+      - oct.
+      - nov.
+      - déc.
+    day_names:
+      - Dimanche
+      - Lundi
+      - Mardi
+      - Mercredi
+      - Jeudi
+      - Vendredi
+      - Samedi
+    formats:
+      date: "%d/%m/%Y"
+      default: "%d-%m-%Y"
+      short: "%d %b %Y"
+      long: "%e %B %Y"
+      full: "%A %e %B %Y"

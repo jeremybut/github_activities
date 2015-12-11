@@ -1,0 +1,11 @@
+%header.index-header
+  %h1
+    Github Activités
+    %span Trouvez les informations d'un utilisateur Github
+    #scrollable-dropdown-menu
+      = form_tag search_path, remote: true, class:"search-box", :method => :post do
+        = search_field_tag :username, nil, class:"typeahead", placeholder:"@utilisateur"
+        = button_tag "Pull user data", class:"search-btn", 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i> Loading...".html_safe
+    #results        
+
+= Search.saved_searches

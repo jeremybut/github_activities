@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %meta{:charset => 'UTF-8'}
+    %title Github Activités
+    %meta{:content => 'IE=edge', 'http-equiv' => 'X-UA-Compatible'}
+    %meta{:content => 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0', :name => 'viewport'}
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    = render 'partials/messages'
+    .container
+      = yield
+    %script{:src => '/assets/classie.js'}
+    %script{:src => '/assets/main.js'}    

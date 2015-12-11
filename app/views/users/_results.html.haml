@@ -1,0 +1,7 @@
+.tt-menu
+  .tt-dataset
+    - @users.items.each do |u|
+      = link_to repos_user_path(u[:login]) do
+        .tt-suggestion
+          %img{src:"#{u[:avatar_url]}"}
+          = u[:login]
