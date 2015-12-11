@@ -10,7 +10,7 @@
   %span 
     %ul.no-bullets
       - @repo.last_year_of_commit(@user).each do |k,v|
-        %li= "#{k.to_s} la semaine numéro #{v.strftime('%U')} de l'année #{v.strftime('%Y')}"
+        %li= "#{k.to_s} commits la semaine numéro #{v.strftime('%U')} de l'année #{v.strftime('%Y')}"
   .loader
   %h3 Position au top 10 des contributeurs: #{@repo.position(@user)}
   %a{:href => "#{@repo.html_url}", target:'_blank'}= @repo.html_url
