@@ -15,11 +15,10 @@ class Repo
   end
 
   # Get the number of commits per hour in each day
-  def commits_per_hour
-    binding.pry
-    self.class.get("/repos/#{self.owner[:login]}/#{self.name}/stats/punch_card")
-    # "25 total commits, during the 2:00pm hour on Tuesdays"    
-  end
+  # def commits_per_hour
+  #   self.class.get("/repos/#{self.owner[:login]}/#{self.name}/stats/punch_card")
+  #   # "25 total commits, during the 2:00pm hour on Tuesdays"    
+  # end
 
   # Get n commits the week of 'time'
   def last_year_of_commit(username)

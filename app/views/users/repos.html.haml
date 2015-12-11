@@ -25,7 +25,7 @@
     %h3  #{pluralize(@user.following, 'abonné')}
 #theGrid.main
   %section.grid
-    - @user.repos.take(6).each do |r|
+    - @user.repos.each do |r|
       = link_to details_user_repo_path(id:r.name, user_id:@user.login), remote: true, class:'grid__item' do
         %h2.title.title--preview= r.name
         .loader
