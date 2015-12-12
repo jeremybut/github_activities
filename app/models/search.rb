@@ -18,7 +18,7 @@ class Search
 
     # Save search into redis
     def save(query)
-      if query != ""
+      if query.present?
         ss = saved_searches
         ss[query] = Time.now
         redis.set('saved_searches', ss.to_json)
