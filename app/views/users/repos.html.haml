@@ -32,7 +32,10 @@
         %span.category= r.description
         .meta.meta--preview
           .glyph-sample
-            %i{class:"icon-#{r.language.downcase}"} 
+            - if r.language
+              %i{class:"icon-#{r.language.downcase}"} 
+            - else
+              %i{class:"fa fa-frown-o"} 
           %span.meta__date= r.language
 
   %section.content

@@ -1,16 +1,32 @@
-%span.category.category--full= @repo.description
-%h2.title.title--full= @repo.name
+%a{:href => "#{@repo.html_url}", target:'_blank'}
+  %h2.title.title--full= @repo.name
+%span.category.category--full
+  = @repo.description
+  %br
+  = @repo.languages.join(', ')
 .meta.meta--full.center
-  .glyph-sample
-    %i{class:"icon-#{@repo.language.downcase}"} 
-  %span=  @repo.languages.join(', ')
-  %h3 Statistiques
+  - if @repo.language
+    .glyph-sample
+      %i{class:"icon-#{@repo.language.downcase}"} 
+  - else
+    .glyph-sample
+      %i{class:"fa fa-frown-o"} 
   %span #{@repo.last_year_commits_count} commits les 52 dernières semaines
   .loader
-  %span 
-    %ul.no-bullets
-      - @repo.last_year_of_commit(@user).each do |k,v|
-        %li= "#{k.to_s} commits la semaine numéro #{v.strftime('%U')} de l'année #{v.strftime('%Y')}"
+  - if @repo.position != false
+    %span Position au top 10 des contributeurs: #{@repo.position}
+  - else
+    %span= "#{@user} ne fait pas parti des 10 premiers contributeurs."
   .loader
-  %h3 Position au top 10 des contributeurs: #{@repo.position(@user)}
-  %a{:href => "#{@repo.html_url}", target:'_blank'}= @repo.html_url
+  - if @repo.stats_of_last_year
+    %span Statistiques par semaines
+    %span 
+      .col-md-12.stats_container
+        - @repo.stats_of_last_year.each do |k|
+          .col-md-3
+            .panel.panel-default
+              .panel-heading= Time.at(k[:w]).strftime('%U') +"/"+ Time.at(k[:w]).strftime('%Y')
+              .panel-body.no-bullets 
+                %li.indent= pluralize(k[:a], 'ajout')
+                %li.indent= pluralize(k[:d], 'suppression')
+                %li.indent= pluralize(k[:c], 'commit')

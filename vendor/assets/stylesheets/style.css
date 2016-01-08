@@ -30,6 +30,10 @@
   color: #c3c8cd;
 }
 
+h2.title.title--preview{
+  word-break: break-all !important;
+}
+
 .clearfix:before, .clearfix:after {
   display: table;
   content: '';
@@ -174,8 +178,17 @@ h4{
   height: 100%
 }
 
+strong.fa-stack-1x.calendar-text {
+    padding-top: 3px !important;
+}
+
 .no-bullets{
   list-style: none !important;
+  padding:0 !important;
+}
+
+.stats_container{
+  margin-top: 20px;
 }
 
 .search-btn-bis{
@@ -301,7 +314,6 @@ h2.title.title--preview{
 .related h3 {
   /*margin: 3em 0 0.5em 0;*/
   font-size: 0.95em;
-  font-weight: 100;
   color: #81c483;
   text-transform: uppercase;
 }
